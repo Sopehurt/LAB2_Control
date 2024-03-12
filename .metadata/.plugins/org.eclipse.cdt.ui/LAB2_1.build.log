@@ -1,0 +1,30 @@
+11:35:59 **** Incremental Build of configuration Debug for project LAB2_1 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:131:29: warning: passing argument 2 of 'HAL_ADC_Start_DMA' makes pointer from integer without a cast [-Wint-conversion]
+  131 |   HAL_ADC_Start_DMA(&hadc1, ADCRead, 1);
+      |                             ^~~~~~~
+      |                             |
+      |                             uint16_t {aka short unsigned int}
+In file included from ../Core/Inc/stm32g4xx_hal_conf.h:228,
+                 from ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_adc.h:2242:78: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint16_t' {aka 'short unsigned int'}
+ 2242 | HAL_StatusTypeDef       HAL_ADC_Start_DMA(ADC_HandleTypeDef *hadc, uint32_t *pData, uint32_t Length);
+      |                                                                    ~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "LAB2_1.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\KMUTT\Year_2\Term_2\MIcro-Controller\LAB2_Control\LAB2_1\STM32G474RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LAB2_1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LAB2_1.elf
+ 
+arm-none-eabi-size  LAB2_1.elf 
+arm-none-eabi-objdump -h -S LAB2_1.elf  > "LAB2_1.list"
+   text	   data	    bss	    dec	    hex	filename
+  26508	     84	   2088	  28680	   7008	LAB2_1.elf
+Finished building: default.size.stdout
+ 
+Finished building: LAB2_1.list
+ 
+
+11:36:00 Build Finished. 0 errors, 1 warnings. (took 939ms)
+
